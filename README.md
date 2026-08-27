@@ -1,1 +1,1 @@
-Implementation of a Blog Api, the idea was taken from here (https://roadmap.sh/projects/blogging-platform-api). Uses Sqlite as a database, no third-party dependencies. You can just clone this project and run. Before building, run `dotnet ef database update`.
+Implementation of a Blog Api, the idea was taken from here (https://roadmap.sh/projects/blogging-platform-api). Uses Sqlite as a database, no third-party dependencies. You can just clone this project and run. Before building, run `dotnet ef database update` in ./Api folder.
