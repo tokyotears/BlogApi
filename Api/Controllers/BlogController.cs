@@ -35,8 +35,8 @@ public class BlogController : ControllerBase
     public async Task<IActionResult> UpdatePost(PostRepository postRepo, PostAddReq req, Guid id)
     {
         BlogPost post = new(Guid.NewGuid(), req.Title, req.Content, req.Category, req.Tags);
-        await postRepo.UpdatePost(id, post);
-        return Ok();
+        var res = await postRepo.UpdatePost(id, post);
+	return res ? Ok() : BadRequest("No post to update");
     }
 
     [HttpDelete("{id:guid}")]

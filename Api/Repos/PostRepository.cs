@@ -13,17 +13,18 @@ public class PostRepository(AppDbContext db)
         db.Posts.Add(post);
         await db.SaveChangesAsync();
     }
-    public async Task UpdatePost(Guid id, BlogPost post)
+    public async Task<bool> UpdatePost(Guid id, BlogPost post)
     {
         var oldPost = await GetPost(id);
 
-        // copy all mutable fields from incoming post into the tracked entity, preserving Id
+	if (oldPost is null) return false;
         oldPost.Title = post.Title;
         oldPost.Content = post.Content;
         oldPost.Category = post.Category;
         oldPost.Tags = post.Tags;
 
         await db.SaveChangesAsync();
+	return true;
     }
     public async Task<bool> DeletePost(Guid id)
     {
